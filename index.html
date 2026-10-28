@@ -4,12 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="hO4BFi-pPEm_cqqg3B-EpfxRj7jz7Ux3w22ksC0kXh4" />
-<meta name="description" content="GHOST-NTT per la Sovranità Digitale La Privacy by Design. Guida alla difesa dagli attacchi digitali, furto di progetti, asset aziendali, violazione dati, revenge porn e orientamento verso le autorità competenti.">
-<link rel="canonical" href="https://GHOST-NTT-privacy-by-design.github.io/" />
 
+<!-- SEO e Meta Description Ottimizzati -->
+<title>SOS Reati Digitali: Divulgazione Dati, Furto Identità o Opera d'Ingegno</title>
+<meta name="description" content="Sito gratuito e senza registrazione: accedi in anonimato e senza telemetria. Se hai subito una divulgazione di dati, un abuso online, il furto d'identità, di un'opera d'ingegno o di un progetto, entra in Ghost-NTT, troverai l'indice con le 4 istituzioni per identificare il reato, scaricare i moduli e denunciare. La Privacy by Design è un tuo diritto.">
+
+<!-- Open Graph per Anteprime Social -->
+<meta property="og:title" content="SOS Reati Digitali: Divulgazione Dati, Furto Identità o Opera d'Ingegno">
+<meta property="og:description" content="Sito gratuito e senza registrazione: accedi in anonimato e senza telemetria. Se hai subito una divulgazione di dati, un abuso online, il furto d'identità, di un'opera d'ingegno o di un progetto, entra in Ghost-NTT, troverai l'indice con le 4 istituzioni per identificare il reato, scaricare i moduli e denunciare. La Privacy by Design è un tuo diritto.">
+
+<link rel="canonical" href="https://GHOST-NTT-privacy-by-design.github.io/" />
 <link rel="icon" type="image/png" href="favicon-ghost.png">
 
-<title>NTT – Sportello Sovranità Digitale</title>
+<!-- Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 :root {
   --bg: #111518;
@@ -79,9 +88,9 @@ header { text-align: center; margin-bottom: 20px; }
 }
 .nav-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
 .nav-tabs button {
-  flex: 1; min-width: 100px; padding: 10px;
+  flex: 1; min-width: 90px; padding: 10px;
   background: #222a33; border: 1px solid var(--border);
-  color: #c5d1e0; border-radius: 8px; cursor: pointer; font-size: 0.85rem;
+  color: #c5d1e0; border-radius: 8px; cursor: pointer; font-size: 0.82rem;
   transition: all 0.2s ease;
 }
 .nav-tabs button.active {
@@ -196,7 +205,8 @@ footer {
   <p style="color:#8b9bb0; font-size:0.88rem; margin-bottom:12px;">Consulta l’indice per capire a chi rivolgerti</p>
   <ul>
     <li><span class="section-name">GDPR / Dati</span><br>Cancellazione dati, spam, telemarketing, reclami al Garante Privacy, violazione privacy</li>
-    <li><span class="section-name">Polizia Postale</span><br>Revenge porn, reati informatici, accessi abusivi, furto progetti, asset aziendali e proprietà intellettuale</li>
+    <li><span class="section-name">Copyright & Proprietà Intellettuale</span><br>Plagio di opere d'ingegno, furto di idee, codice sorgente, brevetti e tutela d'autore</li>
+    <li><span class="section-name">Polizia Postale</span><br>Revenge porn, reati informatici, accessi abusivi, furto progetti, asset aziendali</li>
     <li><span class="section-name">Cyber Security</span><br>Account hackerato, compromissioni, attacchi digitali, segnalazione ad ACN</li>
     <li><span class="section-name">Aiuto Legale</span><br>Primo orientamento e gratuito patrocinio (Progetto Beta in attesa di affiliazioni)</li>
   </ul>
@@ -208,17 +218,18 @@ footer {
 
   <div class="nav-tabs">
     <button class="active" onclick="showSection('home', this)">Home</button>
-    <button onclick="showSection('gdpr', this)">GDPR / Dati</button>
-    <button onclick="showSection('polizia', this)">Polizia Postale</button>
-    <button onclick="showSection('cyber', this)">Cyber Security</button>
-    <button onclick="showSection('legale', this)">Aiuto Legale</button>
+    <button onclick="showSection('gdpr', this)">GDPR</button>
+    <button onclick="showSection('copyright', this)">Copyright</button>
+    <button onclick="showSection('polizia', this)">Polizia</button>
+    <button onclick="showSection('cyber', this)">Cyber</button>
+    <button onclick="showSection('legale', this)">Legale</button>
   </div> 
 
   <div id="home" class="section active">
     <div class="quick-grid">
       <button class="btn" onclick="setQuick('Voglio cancellare i miei dati (art. 17 GDPR)')">📋 Cancellazione dati (Art. 17)</button>
+      <button class="btn" onclick="setQuick('Mi hanno copiato un opera d ingegno o violato il copyright')">©️ Violazione Copyright / Plagio</button>
       <button class="btn" onclick="setQuick('Account hackerato o attacco digitale')">🔐 Account hackerato / Attacco</button>
-      <button class="btn" onclick="setQuick('Spam e telefonate commerciali')">📞 Spam / Telemarketing</button>
       <button class="btn" onclick="setQuick('Appropriazione indebita, furto di progetti, asset aziendali o proprietà intellettuale')">⚠️ Furto progetti / Asset aziendali</button>
     </div>
     <label style="font-size:0.85rem; color:#8b9bb0; display:block; margin-bottom:6px;">Descrivi cosa ti è successo:</label>
@@ -260,6 +271,15 @@ Firma: ____________
     <button class="btn-small" onclick="downloadTemplate()">Scarica .txt</button>
   </div> 
 
+  <div id="copyright" class="section">
+    <h2>Copyright e Proprietà Intellettuale</h2>
+    <p style="margin-bottom:12px; font-size:0.9rem;">La tutela delle opere d'ingegno, dei progetti, del codice sorgente e delle creazioni originali contro il plagio e l'appropriazione indebita.</p>
+    <div class="link-box">
+      <strong>Tutela e Prove d'Autore</strong><br>
+      Conserva sempre i file originali, le ricevute di invio PEC/blockchain, i log di sviluppo e le marcature temporali. In caso di divulgazione illecita o furto d'opera, è possibile procedere con diffida legale e segnalazione alla Polizia Postale per violazione del diritto d'autore.
+    </div>
+  </div>
+
   <div id="polizia" class="section">
     <h2>Polizia Postale e delle Comunicazioni</h2>
     <div class="link-box">
@@ -289,7 +309,7 @@ Firma: ____________
     <h2>Aiuto Legale</h2>
     <div class="link-box" style="border-left: 3px solid var(--gold-ntt);">
       <strong>PROGETTO BETA – SEZIONE IN AGGIORNAMENTO</strong><br><br>
-      Al momento questo sportello <strong>non è associato ad alcun studio legale</strong>. Questa sezione serve a valutare la necessità di future convenzioni legali.<br><br>
+      Al momento questo sportello <strong>non è associato ad alcun studio legale</strong>. Questa sezione serve a valutare la necessità di future convenzioni o studi associati.<br><br>
       Ricorda che puoi verificare il diritto al <strong>Gratuito Patrocinio</strong> a spese dello Stato presso il Consiglio dell’Ordine degli Avvocati (limite di reddito applicabile).
     </div>
     <p style="font-size:0.88rem; margin-top:10px;">
@@ -298,20 +318,21 @@ Firma: ____________
   </div>
 </div> 
 
+<!-- Sezione Feedback / Valutazione collegata a Supabase -->
 <div class="feedback-container" style="text-align: center; margin: 28px 0; padding: 20px; background: var(--card-inner); border-radius: 12px; border: 1px solid var(--border);">
   <h3 style="margin-bottom: 15px; font-size: 1.1rem; color: #e1e7ed;">Valuta l'utilità di questa guida</h3>
   
   <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 15px;">
-    <button id="btn-like" onclick="inviaValutazione('LIKE 👍')" style="padding: 12px 24px; font-size: 1.1rem; cursor: pointer; border-radius: 8px; border: 1px solid var(--green-ntt); background: #162b1a; color: #fff; transition: 0.3s;">
+    <button id="btn-like" onclick="inviaValutazione('LIKE')" style="padding: 12px 24px; font-size: 1.1rem; cursor: pointer; border-radius: 8px; border: 1px solid var(--green-ntt); background: #162b1a; color: #fff; transition: 0.3s;">
       👍 <span id="count-like">0</span>
     </button>
-    <button id="btn-dislike" onclick="inviaValutazione('DISLIKE 👎')" style="padding: 12px 24px; font-size: 1.1rem; cursor: pointer; border-radius: 8px; border: 1px solid var(--border); background: #222a33; color: #fff; transition: 0.3s;">
+    <button id="btn-dislike" onclick="inviaValutazione('DISLIKE')" style="padding: 12px 24px; font-size: 1.1rem; cursor: pointer; border-radius: 8px; border: 1px solid var(--border); background: #222a33; color: #fff; transition: 0.3s;">
       👎 <span id="count-dislike">0</span>
     </button>
   </div> 
 
   <p id="feedback-msg" style="font-size: 0.85rem; color: #8b9bb0; margin-top: 10px;">
-    <i>*I riscontri sono inviati in modo totalmente anonimo all'autrice per misurare l'efficacia dello sportello.</i>
+    <i>*I riscontri sono inviati in modo totalmente anonimo per misurare l'efficacia dello sportello.</i>
   </p>
 </div> 
 
@@ -320,7 +341,7 @@ Firma: ____________
   <p style="font-size:0.88rem; color:#8b9bb0; margin-bottom:10px;">
     La tua opinione è fondamentale per far crescere questo sportello. Nessun dato personale richiesto.
   </p>
-  <form id="formFeedback" onsubmit="inviaFeedback(event)">
+  <form id="formFeedback" onsubmit="inviaFeedbackSupabase(event)">
     <textarea id="feedbackTxt" name="messaggio" placeholder="Scrivi qui il tuo suggerimento..." required></textarea>
     <button type="submit" class="btn-main" style="margin-top:0;">Invia feedback anonimo</button>
   </form>
@@ -348,202 +369,223 @@ Firma: ____________
 <button class="float-speak" id="floatSpeak" onclick="toggleSpeak()">🔊</button> 
 
 <script>
-const FORMSPREE_URL = "https://formspree.io/f/xrpzpqgr";
+  // Configurazione Supabase (Utilizzo ESCLUSIVO della chiave pubblica 'anon')
+  const SUPABASE_URL = 'https://mkzbvkamwjuyhdvvajqc.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_1s7cV0ymDmCPmMetIPCkKQ_-jjktIUp';
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-function inviaValutazione(tipo) {
-  if (localStorage.getItem('ntt_voto_inviato')) {
-    alert("Hai già espresso la tua valutazione da questo dispositivo.");
-    return;
-  } 
-
-  fetch(FORMSPREE_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body: JSON.stringify({
-      oggetto: "Report Valutazione Sportello NTT",
-      valutazione: tipo,
-      data: new Date().toLocaleString("it-IT")
-    })
-  }).then(() => {
-    localStorage.setItem('ntt_voto_inviato', 'true');
-    if (tipo.includes('LIKE')) {
-      document.getElementById('feedback-msg').innerHTML = `<b style='color:var(--green-light);'>Grazie! Valutazione registrata con successo.</b>`;
-    } else {
-      document.getElementById('feedback-msg').innerHTML = `<b style='color:var(--gold-ntt);'>Ci dispiace per non esserti stato utile. Miglioreremo grazie al tuo feedback.</b>`;
+  async function inviaValutazione(tipo) {
+    if (localStorage.getItem('ntt_voto_inviato')) {
+      alert("Hai già espresso la tua valutazione da questo dispositivo.");
+      return;
     }
-  }).catch(() => {
-    localStorage.setItem('ntt_voto_inviato', 'true');
-    document.getElementById('feedback-msg').innerHTML = `<b style='color:var(--green-light);'>Valutazione registrata.</b>`;
+
+    try {
+      const { error } = await supabaseClient
+        .from('feedback_likes')
+        .insert([{ tipo: tipo, data: new Date().toISOString() }]);
+
+      if (error) throw error;
+
+      localStorage.setItem('ntt_voto_inviato', 'true');
+      if (tipo === 'LIKE') {
+        document.getElementById('feedback-msg').innerHTML = `<b style="color:var(--green-light);">Grazie! Valutazione registrata con successo.</b>`;
+      } else {
+        document.getElementById('feedback-msg').innerHTML = `<b style="color:var(--gold-ntt);">Ci dispiace per non esserti stato utile. Miglioreremo grazie al tuo feedback.</b>`;
+      }
+      aggiornaConteggiLike();
+    } catch (e) {
+      console.error("Errore salvataggio voto:", e);
+      alert("Errore di registrazione del voto.");
+    }
+  }
+
+  async function aggiornaConteggiLike() {
+    try {
+      const { data, error } = await supabaseClient.from('feedback_likes').select('tipo');
+      if (error || !data) return;
+      let likes = data.filter(item => item.tipo === 'LIKE').length;
+      let dislikes = data.filter(item => item.tipo === 'DISLIKE').length;
+      document.getElementById('count-like').innerText = likes;
+      document.getElementById('count-dislike').innerText = dislikes;
+    } catch (err) {
+      console.error("Errore caricamento contatori", err);
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    aggiornaConteggiLike();
   });
-} 
 
-function playAvviso() {
-  const audio = document.getElementById('avvisoAudio');
-  if (audio.paused) { audio.play(); }
-  else { audio.pause(); audio.currentTime = 0; }
-} 
+  async function inviaFeedbackSupabase(event) {
+    event.preventDefault();
+    const testo = document.getElementById('feedbackTxt').value;
+    const msgBox = document.getElementById('feedbackMsg');
+    
+    msgBox.style.display = 'block';
+    msgBox.innerText = "Invio in corso...";
 
-function showSection(id, btn) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  stopSpeak();
-} 
+    try {
+      const { error } = await supabaseClient
+        .from('feedback_messaggi')
+        .insert([{ messaggio: testo, data: new Date().toISOString() }]);
 
-function setQuick(text) {
-  document.getElementById('problemText').value = text;
-  showSection('home', document.querySelector('.nav-tabs button'));
-} 
+      if (error) throw error;
 
-function analyze() {
-  const rawText = document.getElementById('problemText').value;
-  const text = rawText.toLowerCase().trim();
-  const box = document.getElementById('responseBox');
-  box.style.display = 'block'; 
-
-  if (!text) {
-    box.innerText = 'Scrivi o detta prima una descrizione del problema.';
-    return;
-  } 
-
-  const frasiPolizia = [
-    'furto', 'rubato', 'rubata', 'progetto', 'progetti', 'idea', 'idee', 'business plan', 
-    'proprieta intellettuale', 'proprietà industriale', 'copiato', 'plagio', 'brevetto', 
-    'marchio', 'software', 'codice sorgente', 'revenge porn', 'diffusione', 'foto', 
-    'immagini', 'ricatto', 'estorsione', 'minacce', 'stalking', 'diffamazione', 'asset', 'aziendale'
-  ]; 
-
-  const frasiCyber = [
-    'hackerato', 'hacker', 'account', 'password', 'intrusione', 'virus', 'malware', 
-    'trojan', 'phishing', 'accesso', 'bloccato', 'dispositivo', 'telefono', 'pc', 
-    'computer', 'telemetria', 'spionaggio', 'controllo remoto', 'violato', 'attacco', 'digitale'
-  ]; 
-
-  const frasiGdpr = [
-    'cancellare', 'cancellazione', 'art. 17', 'dati personali', 'oblio', 'eliminare', 
-    'rimuovere', 'spam', 'telefonate', 'telemarketing', 'call center', 'pubblicità', 
-    'consenso', 'privacy', 'garante', 'email non gradita', 'divulgazione'
-  ]; 
-
-  const frasiLegale = [
-    'avvocato', 'legale', 'denuncia', 'querela', 'risarcimento', 'danni', 'patrocinio', 
-    'gratuito patrocinio', 'tribunale', 'giudice', 'causa', 'spese legali', 'tutela', 
-    'diffida', 'lettera dell avvocato', 'consulenza'
-  ]; 
-
-  const matches = (list) => list.some(k => text.includes(k)); 
-
-  let risposta = ''; 
-
-  if (matches(frasiPolizia)) {
-    risposta = '🚨 Rilevata possibile violazione di proprietà intellettuale, furto di progetti, asset aziendali o reato informatico.\n\n1. Conserva subito tutte le prove (screenshot, file di progetto, email, marcature temporali).\n2. Vai nella sezione Polizia Postale per accedere alla pre-denuncia online o agli indirizzi competenti.\n3. Ricorda che NTT ti orienta verso gli organi di polizia e il Garante.';
-    showSection('polizia', document.querySelectorAll('.nav-tabs button')[2]);
-  } else if (matches(frasiCyber)) {
-    risposta = '🛡️ Rilevato potenziale attacco informatico, compromissione dell\'account o intrusione digitale.\n\n1. Vai nella sezione Cyber Security per seguire i passi di messa in sicurezza immediata.\n2. Cambia password, scollega sessioni anomale e attiva la 2FA.\n3. Per incidenti strutturali, consulta i riferimenti dell\'Agenzia per la Cybersicurezza Nazionale (ACN).';
-    showSection('cyber', document.querySelectorAll('.nav-tabs button')[3]);
-  } else if (matches(frasiGdpr)) {
-    risposta = '📜 Rilevata richiesta legata al GDPR, cancellazione dati, violazione privacy o marketing aggressivo.\n\n1. Vai nella sezione GDPR / Dati.\n2. Usa il modello pronto per l\'Art. 17 GDPR per richiedere la cancellazione.\n3. In caso di mancata risposta, utilizza i riferimenti PEC del Garante Privacy.';
-    showSection('gdpr', document.querySelectorAll('.nav-tabs button')[1]);
-  } else if (matches(frasiLegale)) {
-    risposta = '⚖️ Rilevata richiesta di orientamento legale.\n\n1. Vai nella sezione Aiuto Legale.\n2. Verifica i parametri per il Gratuito Patrocinio statale.\n3. Nota: Al momento la sezione legale è in versione Beta e non è associata ad alcun studio specifico.';
-    showSection('legale', document.querySelectorAll('.nav-tabs button')[4]);
-  } else {
-    risposta = '🔍 Non sono riuscito ad associare automaticamente il tuo testo a una categoria specifica.\n\nConsulta l’indice in alto oppure descrivi chiaramente il problema (es. "Voglio difendermi da un attacco digitale", "Mi hanno rubato un asset aziendale").';
-  } 
-
-  box.innerText = risposta + '\n\n---\nVersione Beta – Solo orientamento informativo e indirizzamento.';
-} 
-
-function copyTemplate() {
-  navigator.clipboard.writeText(document.getElementById('template17').innerText)
-    .then(() => alert('Testo copiato!'));
-} 
-
-function downloadTemplate() {
-  const blob = new Blob([document.getElementById('template17').innerText], {type: 'text/plain'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'Art17_GDPR.txt';
-  a.click();
-} 
-
-async function inviaFeedback(event) {
-  event.preventDefault();
-  const testo = document.getElementById('feedbackTxt').value;
-  const msgBox = document.getElementById('feedbackMsg');
-  
-  msgBox.style.display = 'block';
-  msgBox.innerText = "Invio in corso..."; 
-
-  try {
-    const response = await fetch(FORMSPREE_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ messaggio_feedback: testo })
-    }); 
-
-    if (response.ok) {
       document.getElementById('formFeedback').style.display = 'none';
       msgBox.innerText = "Grazie per il tuo feedback anonimo!";
-    } else {
-      msgBox.innerText = "Si è verificato un errore nell'invio.";
+    } catch (e) {
+      msgBox.innerText = "Si è verificato un errore nell'invio a Supabase.";
     }
-  } catch (e) {
-    msgBox.innerText = "Errore di connessione durante l'invio.";
   }
-} 
 
-let speaking = false, paused = false;
-function toggleSpeak() {
-  if (!window.speechSynthesis) { alert('Lettura vocale non supportata'); return; }
-  const btn = document.getElementById('floatSpeak');
-  if (speaking && !paused) { speechSynthesis.pause(); paused = true; btn.textContent = '▶️'; }
-  else if (speaking && paused) { speechSynthesis.resume(); paused = false; btn.textContent = '⏸️'; }
-  else { startSpeak(); }
-} 
+  function playAvviso() {
+    const audio = document.getElementById('avvisoAudio');
+    if (audio.paused) { audio.play(); }
+    else { audio.pause(); audio.currentTime = 0; }
+  } 
 
-function startSpeak() {
-  stopSpeak();
-  const response = document.getElementById('responseBox');
-  let text = (response && response.style.display !== 'none' && response.innerText.trim()) 
-    ? response.innerText 
-    : (document.querySelector('.section.active')?.innerText || '');
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'it-IT';
-  u.onend = () => { speaking = false; paused = false; document.getElementById('floatSpeak').textContent = '🔊'; };
-  speechSynthesis.speak(u);
-  speaking = true; paused = false;
-  document.getElementById('floatSpeak').textContent = '⏸️';
-} 
+  function showSection(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    stopSpeak();
+  } 
 
-function stopSpeak() {
-  speechSynthesis.cancel();
-  speaking = false; paused = false;
-  document.getElementById('floatSpeak').textContent = '🔊';
-} 
+  function setQuick(text) {
+    document.getElementById('problemText').value = text;
+    showSection('home', document.querySelector('.nav-tabs button'));
+  } 
 
-let recognition = null, listening = false;
-function toggleMic() {
-  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-    alert('Il microfono funziona meglio con Chrome o Edge'); return;
+  function analyze() {
+    const rawText = document.getElementById('problemText').value;
+    const text = rawText.toLowerCase().trim();
+    const box = document.getElementById('responseBox');
+    box.style.display = 'block'; 
+
+    if (!text) {
+      box.innerText = 'Scrivi o detta prima una descrizione del problema.';
+      return;
+    } 
+
+    const frasiCopyright = [
+      'copyright', 'plagio', 'copiato', 'opera d ingegno', 'opera d\'ingegno', 'idea', 'progetto', 
+      'codice sorgente', 'brevetto', 'marchio', 'proprieta intellettuale', 'proprietà intellettuale'
+    ];
+
+    const frasiPolizia = [
+      'furto', 'rubato', 'rubata', 'revenge porn', 'diffusione', 'foto', 
+      'immagini', 'ricatto', 'estorsione', 'minacce', 'stalking', 'diffamazione', 'asset', 'aziendale'
+    ]; 
+
+    const frasiCyber = [
+      'hackerato', 'hacker', 'account', 'password', 'intrusione', 'virus', 'malware', 
+      'trojan', 'phishing', 'accesso', 'bloccato', 'dispositivo', 'telefono', 'pc', 
+      'computer', 'telemetria', 'spionaggio', 'controllo remoto', 'violato', 'attacco', 'digitale'
+    ]; 
+
+    const frasiGdpr = [
+      'cancellare', 'cancellazione', 'art. 17', 'dati personali', 'oblio', 'eliminare', 
+      'rimuovere', 'spam', 'telefonate', 'telemarketing', 'call center', 'pubblicità', 
+      'consenso', 'privacy', 'garante', 'email non gradita', 'divulgazione'
+    ]; 
+
+    const frasiLegale = [
+      'avvocato', 'legale', 'denuncia', 'querela', 'risarcimento', 'danni', 'patrocinio', 
+      'gratuito patrocinio', 'tribunale', 'giudice', 'causa', 'spese legali', 'tutela', 
+      'diffida', 'lettera dell avvocato', 'consulenza'
+    ]; 
+
+    const matches = (list) => list.some(k => text.includes(k)); 
+
+    let risposta = ''; 
+
+    if (matches(frasiCopyright)) {
+      risposta = '©️ Rilevata possibile violazione di Copyright o plagio di un\'opera d\'ingegno.\n\n1. Raccogli e blinda tutte le prove digitali e le marcature temporali del tuo lavoro.\n2. Consulta la sezione dedicata al Copyright per le tutele d\'autore.\n3. Valuta l\'invio di una diffida o la segnalazione per appropriazione indebita.';
+      showSection('copyright', document.querySelectorAll('.nav-tabs button')[2]);
+    } else if (matches(frasiPolizia)) {
+      risposta = '🚨 Rilevata possibile violazione di asset aziendali o reato informatico.\n\n1. Conserva subito tutte le prove (screenshot, file, email).\n2. Vai nella sezione Polizia Postale per accedere alla pre-denuncia online.\n3. NTT ti orienta verso gli organi di polizia competenti.';
+      showSection('polizia', document.querySelectorAll('.nav-tabs button')[3]);
+    } else if (matches(frasiCyber)) {
+      risposta = '🛡️ Rilevato potenziale attacco informatico o compromissione account.\n\n1. Vai nella sezione Cyber Security per la messa in sicurezza immediata.\n2. Cambia password e attiva la 2FA.\n3. Per incidenti strutturali, consulta i riferimenti dell\'ACN.';
+      showSection('cyber', document.querySelectorAll('.nav-tabs button')[4]);
+    } else if (matches(frasiGdpr)) {
+      risposta = '📜 Rilevata richiesta legata al GDPR o cancellazione dati.\n\n1. Vai nella sezione GDPR / Dati.\n2. Usa il modello pronto per l\'Art. 17 GDPR.\n3. In caso di mancata risposta, utilizza i riferimenti PEC del Garante Privacy.';
+      showSection('gdpr', document.querySelectorAll('.nav-tabs button')[1]);
+    } else if (matches(frasiLegale)) {
+      risposta = '⚖️ Rilevata richiesta di orientamento legale.\n\n1. Vai nella sezione Aiuto Legale.\n2. Verifica i parametri per il Gratuito Patrocinio statale.';
+      showSection('legale', document.querySelectorAll('.nav-tabs button')[5]);
+    } else {
+      risposta = '🔍 Non sono riuscito ad associare automaticamente il tuo testo a una categoria specifica.\n\nConsulta l’indice in alto oppure descrivi chiaramente il problema.';
+    } 
+
+    box.innerText = risposta + '\n\n---\nVersione Beta – Solo orientamento informativo e indirizzamento.';
+  } 
+
+  function copyTemplate() {
+    navigator.clipboard.writeText(document.getElementById('template17').innerText)
+      .then(() => alert('Testo copiato!'));
+  } 
+
+  function downloadTemplate() {
+    const blob = new Blob([document.getElementById('template17').innerText], {type: 'text/plain'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'Art17_GDPR.txt';
+    a.click();
+  } 
+
+  let speaking = false, paused = false;
+  function toggleSpeak() {
+    if (!window.speechSynthesis) { alert('Lettura vocale non supportata'); return; }
+    const btn = document.getElementById('floatSpeak');
+    if (speaking && !paused) { speechSynthesis.pause(); paused = true; btn.textContent = '▶️'; }
+    else if (speaking && paused) { speechSynthesis.resume(); paused = false; btn.textContent = '⏸️'; }
+    else { startSpeak(); }
+  } 
+
+  function startSpeak() {
+    stopSpeak();
+    const response = document.getElementById('responseBox');
+    let text = (response && response.style.display !== 'none' && response.innerText.trim()) 
+      ? response.innerText 
+      : (document.querySelector('.section.active')?.innerText || '');
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'it-IT';
+    u.onend = () => { speaking = false; paused = false; document.getElementById('floatSpeak').textContent = '🔊'; };
+    speechSynthesis.speak(u);
+    speaking = true; paused = false;
+    document.getElementById('floatSpeak').textContent = '⏸️';
+  } 
+
+  function stopSpeak() {
+    speechSynthesis.cancel();
+    speaking = false; paused = false;
+    document.getElementById('floatSpeak').textContent = '🔊';
+  } 
+
+  let recognition = null, listening = false;
+  function toggleMic() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      alert('Il microfono funziona meglio con Chrome o Edge'); return;
+    }
+    if (listening) { recognition.stop(); return; }
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SR();
+    recognition.lang = 'it-IT';
+    recognition.continuous = false;
+    recognition.onstart = () => { listening = true; document.getElementById('micBtn').classList.add('listening'); };
+    recognition.onresult = (e) => {
+      const testo = e.results[0][0].transcript;
+      const area = document.getElementById('problemText');
+      area.value = (area.value + ' ' + testo).trim();
+    };
+    recognition.onend = recognition.onerror = () => {
+      listening = false; document.getElementById('micBtn').classList.remove('listening');
+    };
+    recognition.start();
   }
-  if (listening) { recognition.stop(); return; }
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  recognition = new SR();
-  recognition.lang = 'it-IT';
-  recognition.continuous = false;
-  recognition.onstart = () => { listening = true; document.getElementById('micBtn').classList.add('listening'); };
-  recognition.onresult = (e) => {
-    const testo = e.results[0][0].transcript;
-    const area = document.getElementById('problemText');
-    area.value = (area.value + ' ' + testo).trim();
-  };
-  recognition.onend = recognition.onerror = () => {
-    listening = false; document.getElementById('micBtn').classList.remove('listening');
-  };
-  recognition.start();
-} 
 </script>
 </body>
 </html>
